@@ -1,10 +1,10 @@
 {
 	"info": {
-		"_postman_id": "123d30b1-95b2-4f49-afc0-4064b49b7929",
+		"_postman_id": "e6323932-9a20-4b5e-a980-8bcba5154f0c",
 		"name": "1. REST API Test",
 		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
 		"_exporter_id": "32291673",
-		"_collection_link": "https://api-aut-test-960506.postman.co/workspace/API-Automation-Test~e4f25b09-dd7c-4713-a2d3-ddaf8efc9412/collection/32291673-123d30b1-95b2-4f49-afc0-4064b49b7929?action=share&source=collection_link&creator=32291673"
+		"_collection_link": "https://api-aut-test-960506.postman.co/workspace/Dummy-Test~377fc758-3dc9-4942-932b-fdca9a163ec7/collection/32291673-e6323932-9a20-4b5e-a980-8bcba5154f0c?action=share&source=collection_link&creator=32291673"
 	},
 	"item": [
 		{
@@ -13,24 +13,21 @@
 				"method": "GET",
 				"header": [],
 				"url": {
-					"raw": "https://reqres.in/api/users?page=1&size=2&sort=acs",
-					"protocol": "https",
+					"raw": "{{HOST_URL}}/users?page={{PAGE}}&size={{SIZE}}&sort=acs",
 					"host": [
-						"reqres",
-						"in"
+						"{{HOST_URL}}"
 					],
 					"path": [
-						"api",
 						"users"
 					],
 					"query": [
 						{
 							"key": "page",
-							"value": "1"
+							"value": "{{PAGE}}"
 						},
 						{
 							"key": "size",
-							"value": "2"
+							"value": "{{SIZE}}"
 						},
 						{
 							"key": "sort",
@@ -47,14 +44,11 @@
 				"method": "GET",
 				"header": [],
 				"url": {
-					"raw": "https://reqres.in/api/users/12",
-					"protocol": "https",
+					"raw": "{{HOST_URL}}/users/12",
 					"host": [
-						"reqres",
-						"in"
+						"{{HOST_URL}}"
 					],
 					"path": [
-						"api",
 						"users",
 						"12"
 					]
@@ -77,14 +71,11 @@
 					}
 				},
 				"url": {
-					"raw": "https://reqres.in/api/users",
-					"protocol": "https",
+					"raw": "{{HOST_URL}}/users",
 					"host": [
-						"reqres",
-						"in"
+						"{{HOST_URL}}"
 					],
 					"path": [
-						"api",
 						"users"
 					]
 				}
@@ -106,14 +97,11 @@
 					}
 				},
 				"url": {
-					"raw": "https://reqres.in/api/users/2",
-					"protocol": "https",
+					"raw": "{{HOST_URL}}/users/2",
 					"host": [
-						"reqres",
-						"in"
+						"{{HOST_URL}}"
 					],
 					"path": [
-						"api",
 						"users",
 						"2"
 					]
@@ -127,14 +115,11 @@
 				"method": "DELETE",
 				"header": [],
 				"url": {
-					"raw": "https://reqres.in/api/users/3",
-					"protocol": "https",
+					"raw": "{{HOST_URL}}/users/3",
 					"host": [
-						"reqres",
-						"in"
+						"{{HOST_URL}}"
 					],
 					"path": [
-						"api",
 						"users",
 						"3"
 					]
@@ -157,14 +142,11 @@
 					}
 				},
 				"url": {
-					"raw": "https://reqres.in/api/users/2",
-					"protocol": "https",
+					"raw": "{{HOST_URL}}/users/2",
 					"host": [
-						"reqres",
-						"in"
+						"{{HOST_URL}}"
 					],
 					"path": [
-						"api",
 						"users",
 						"2"
 					]
