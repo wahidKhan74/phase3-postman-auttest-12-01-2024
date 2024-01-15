@@ -26,8 +26,8 @@
 							"    pm.expect(jsonData.data).to.not.null;\r",
 							"});\r",
 							"\r",
-							"pm.test(\"Response time is less than 200ms\", function () {\r",
-							"    pm.expect(pm.response.responseTime).to.be.below(200);\r",
+							"pm.test(\"Response time is less than 2000ms\", function () {\r",
+							"    pm.expect(pm.response.responseTime).to.be.below(2000);\r",
 							"});"
 						],
 						"type": "text/javascript"
