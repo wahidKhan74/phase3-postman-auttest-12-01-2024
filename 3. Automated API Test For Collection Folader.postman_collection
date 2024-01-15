@@ -1,0 +1,410 @@
+{
+	"info": {
+		"_postman_id": "f0d770ae-70d7-4b3e-a4e6-b6ffc0f77807",
+		"name": "3. Automated API Test",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+		"_exporter_id": "32291673",
+		"_collection_link": "https://api-aut-test-960506.postman.co/workspace/Dummy-Test~377fc758-3dc9-4942-932b-fdca9a163ec7/collection/32291673-f0d770ae-70d7-4b3e-a4e6-b6ffc0f77807?action=share&source=collection_link&creator=32291673"
+	},
+	"item": [
+		{
+			"name": "Read Operations",
+			"item": [
+				{
+					"name": "Get All users Request",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"exec": [
+									"pm.test(\"Status code is 200\", function () {\r",
+									"    pm.response.to.have.status(200);\r",
+									"});\r",
+									"\r",
+									"pm.test(\"Repose body should be JSON\", function () {\r",
+									"    var jsonData = pm.response.json();\r",
+									"    pm.expect(jsonData.page).to.eql(1);\r",
+									"    pm.expect(jsonData.per_page).to.eql(6);\r",
+									"    pm.expect(jsonData.total_pages).to.eql(2);\r",
+									"    pm.expect(jsonData.data).to.not.null;\r",
+									"});\r",
+									"\r",
+									"pm.test(\"Response time is less than 2000ms\", function () {\r",
+									"    pm.expect(pm.response.responseTime).to.be.below(2000);\r",
+									"});"
+								],
+								"type": "text/javascript"
+							}
+						}
+					],
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{URL}}/users?page={{PAGEC}}&size={{SIZEC}}&sort=acs",
+							"host": [
+								"{{URL}}"
+							],
+							"path": [
+								"users"
+							],
+							"query": [
+								{
+									"key": "page",
+									"value": "{{PAGEC}}"
+								},
+								{
+									"key": "size",
+									"value": "{{SIZEC}}"
+								},
+								{
+									"key": "sort",
+									"value": "acs"
+								}
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Get user by userId",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"exec": [
+									"pm.test(\"Status code is 200 Successfull\", function () {\r",
+									"    pm.response.to.have.status(200);\r",
+									"});\r",
+									"\r",
+									"pm.test(\"Response time is less than 1000ms\", function () {\r",
+									"    pm.expect(pm.response.responseTime).to.be.below(1000);\r",
+									"});\r",
+									"\r",
+									"pm.test(\"Reponse should be a json with valid\", function () {\r",
+									"    var jsonData = pm.response.json();\r",
+									"    pm.expect(jsonData.data.id).to.eql(12);\r",
+									"});\r",
+									"\r",
+									"pm.test(\"Reponse should be a json and dynamic properties\", function () {\r",
+									"    var jsonData = pm.response.json();\r",
+									"    // check the properties exist\r",
+									"    pm.expect(jsonData.data).to.have.property( \"id\");\r",
+									"    pm.expect(jsonData.data).to.have.property( \"email\");\r",
+									"    pm.expect(jsonData.data).to.have.property( \"first_name\");\r",
+									"    pm.expect(jsonData.data).to.have.property( \"last_name\");\r",
+									"    pm.expect(jsonData.data).to.have.property( \"avatar\");\r",
+									"\r",
+									"    // check the properties exist & not null\r",
+									"    pm.expect(jsonData.data.id).to.not.be.null;\r",
+									"    pm.expect(jsonData.data.id).to.not.be.undefined;\r",
+									"\r",
+									"    // check the properties exist & not undefined.\r",
+									"    pm.expect(jsonData.data.email).to.not.be.null;\r",
+									"    pm.expect(jsonData.data.email).to.not.be.undefined;\r",
+									"});\r",
+									"\r",
+									"\r",
+									"pm.test(\"Reponse should be a json and not null & not undefined properties\", function () {\r",
+									"    var jsonData = pm.response.json();\r",
+									"   \r",
+									"    // check the properties exist & not null\r",
+									"    pm.expect(jsonData.data.id).to.not.be.null;\r",
+									"    pm.expect(jsonData.data.id).to.not.be.undefined;\r",
+									"    \r",
+									"    // check the properties exist & not undefined.\r",
+									"    pm.expect(jsonData.data.email).to.not.be.null;\r",
+									"    pm.expect(jsonData.data.email).to.not.be.undefined;\r",
+									"\r",
+									"    // check the properties exist & not undefined.\r",
+									"    pm.expect(jsonData.data.first_name).to.not.be.null;\r",
+									"    pm.expect(jsonData.data.first_name).to.not.be.undefined;\r",
+									"\r",
+									"    // check the properties exist & not undefined.\r",
+									"    pm.expect(jsonData.data.last_name).to.not.be.null;\r",
+									"    pm.expect(jsonData.data.last_name).to.not.be.undefined;\r",
+									"});"
+								],
+								"type": "text/javascript"
+							}
+						}
+					],
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{URL}}/users/12",
+							"host": [
+								"{{URL}}"
+							],
+							"path": [
+								"users",
+								"12"
+							]
+						}
+					},
+					"response": []
+				}
+			],
+			"event": [
+				{
+					"listen": "prerequest",
+					"script": {
+						"type": "text/javascript",
+						"exec": [
+							"pm.collectionVariables.set(\"userId\", \"sdfkjleru39043324\");",
+							"pm.collectionVariables.set(\"username\", \"john smith\");"
+						]
+					}
+				},
+				{
+					"listen": "test",
+					"script": {
+						"type": "text/javascript",
+						"exec": [
+							"pm.test(\"Validate Collections varaibles\", function () {",
+							"",
+							"   var userId =  pm.collectionVariables.get(\"userId\");",
+							"   var username =  pm.collectionVariables.get(\"username\");",
+							"",
+							"   console.log(userId, username);",
+							"});"
+						]
+					}
+				}
+			]
+		},
+		{
+			"name": "Write Operations",
+			"item": [
+				{
+					"name": "Create a user",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"exec": [
+									"pm.test(\"Status code is 201 Created\", function () {\r",
+									"    pm.response.to.have.status(201);\r",
+									"});\r",
+									"\r",
+									"pm.test(\"Response time is less than 1000ms\", function () {\r",
+									"    pm.expect(pm.response.responseTime).to.be.below(1000);\r",
+									"});\r",
+									"\r",
+									"pm.test(\"Reponse should be a json with valid\", function () {\r",
+									"    var jsonData = pm.response.json();\r",
+									"    pm.expect(jsonData.name).to.eql(\"Morpheus Smith\");\r",
+									"    pm.expect(jsonData.job).to.eql(\"Metrix Leader\");\r",
+									"});\r",
+									"\r",
+									"pm.test(\"Reponse should be a json and dymaic\", function () {\r",
+									"    var jsonData = pm.response.json();\r",
+									"    // check the properties exist\r",
+									"    pm.expect(jsonData).to.have.property( \"id\");\r",
+									"    pm.expect(jsonData).to.have.property( \"createdAt\");\r",
+									"    // check the properties exist & not null\r",
+									"    pm.expect(jsonData.id).to.not.be.null;\r",
+									"    pm.expect(jsonData.id).to.not.be.undefined;\r",
+									"    // check the properties exist & not undefined.\r",
+									"    pm.expect(jsonData.createdAt).to.not.be.null;\r",
+									"    pm.expect(jsonData.createdAt).to.not.be.undefined;\r",
+									"});"
+								],
+								"type": "text/javascript"
+							}
+						}
+					],
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"name\": \"Morpheus Smith\",\r\n    \"job\": \"Metrix Leader\"\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{URL}}/users",
+							"host": [
+								"{{URL}}"
+							],
+							"path": [
+								"users"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Update a user by userId",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"exec": [
+									"pm.test(\"Status code is 200\", function () {\r",
+									"    pm.response.to.have.status(200);\r",
+									"});\r",
+									"\r",
+									"pm.test(\"Response time is less than 1000ms\", function () {\r",
+									"    pm.expect(pm.response.responseTime).to.be.below(1000);\r",
+									"});\r",
+									"\r",
+									"pm.test(\"Reponse should be a json with valid\", function () {\r",
+									"    var jsonData = pm.response.json();\r",
+									"    pm.expect(jsonData.name).to.eql(\"morpheus\");\r",
+									"    pm.expect(jsonData.job).to.eql(\"zion resident\");\r",
+									"});\r",
+									"\r",
+									"pm.test(\"Reponse should be a json and dymaic\", function () {\r",
+									"    var jsonData = pm.response.json();\r",
+									"    // check the properties exist\r",
+									"    pm.expect(jsonData).to.have.property( \"name\");\r",
+									"    pm.expect(jsonData).to.have.property( \"updatedAt\");\r",
+									"    // check the properties exist & not null\r",
+									"    pm.expect(jsonData.name).to.not.be.null;\r",
+									"    pm.expect(jsonData.name).to.not.be.undefined;\r",
+									"    // check the properties exist & not undefined.\r",
+									"    pm.expect(jsonData.updatedAt).to.not.be.null;\r",
+									"    pm.expect(jsonData.updatedAt).to.not.be.undefined;\r",
+									"});\r",
+									"\r",
+									"pm.test(\"Content-Type header is present\", () => {\r",
+									"  pm.response.to.have.header(\"Content-Type\");\r",
+									"});\r",
+									"\r",
+									"pm.test(\"Content-Type header is application/json\", () => {\r",
+									"  pm.expect(pm.response.headers.get('Content-Type')).to.include('application/json');\r",
+									"});\r",
+									"\r",
+									"// pm.test(\"Cookie isLoggedIn is present\", () => {\r",
+									"//   pm.expect(pm.cookies.has('isLoggedIn')).to.be.true;\r",
+									"// });\r",
+									""
+								],
+								"type": "text/javascript"
+							}
+						}
+					],
+					"request": {
+						"method": "PUT",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"name\": \"morpheus\",\r\n    \"job\": \"zion resident\"\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{URL}}/users/2",
+							"host": [
+								"{{URL}}"
+							],
+							"path": [
+								"users",
+								"2"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Delete user by userId Request",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"exec": [
+									"pm.test(\"Status code is 204 : Delete has no content\", function () {\r",
+									"    pm.response.to.have.status(204);\r",
+									"});\r",
+									"\r",
+									"pm.test(\"Response time is less than 1000ms\", function () {\r",
+									"    pm.expect(pm.response.responseTime).to.be.below(1000);\r",
+									"});\r",
+									"\r",
+									""
+								],
+								"type": "text/javascript"
+							}
+						}
+					],
+					"request": {
+						"method": "DELETE",
+						"header": [],
+						"url": {
+							"raw": "{{URL}}/users/3",
+							"host": [
+								"{{URL}}"
+							],
+							"path": [
+								"users",
+								"3"
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		}
+	],
+	"event": [
+		{
+			"listen": "prerequest",
+			"script": {
+				"type": "text/javascript",
+				"exec": [
+					""
+				]
+			}
+		},
+		{
+			"listen": "test",
+			"script": {
+				"type": "text/javascript",
+				"exec": [
+					"pm.test(\"Validate Collections varaibles\", function () {",
+					"",
+					"   var host_url =  pm.collectionVariables.get(\"URL\");",
+					"   var page =  pm.collectionVariables.get(\"PAGEC\");",
+					"   var size =  pm.collectionVariables.get(\"SIZEC\");",
+					"",
+					"   console.log(host_url, page , size);",
+					"});"
+				]
+			}
+		}
+	],
+	"variable": [
+		{
+			"key": "URL",
+			"value": "https://reqres.in/api",
+			"type": "string"
+		},
+		{
+			"key": "PAGEC",
+			"value": "0",
+			"type": "string"
+		},
+		{
+			"key": "SIZEC",
+			"value": "10",
+			"type": "string"
+		},
+		{
+			"key": "userId",
+			"value": ""
+		},
+		{
+			"key": "username",
+			"value": ""
+		}
+	]
+}
