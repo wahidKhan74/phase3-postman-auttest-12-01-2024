@@ -2,13 +2,14 @@
 	"info": {
 		"_postman_id": "e6323932-9a20-4b5e-a980-8bcba5154f0c",
 		"name": "1. REST API Test",
+		"description": "REST API testing involves evaluating the functionality of a RESTful web service by sending HTTP requests to the API and examining the responses. REST (Representational State Transfer) is an architectural style commonly used in web services, and RESTful APIs communicate over standard HTTP methods (e.g., GET, POST, PUT, DELETE). Here's a detailed description of REST API testing:\n\n### Overview:\n\nREST API testing is a crucial aspect of software testing that focuses on verifying the behavior and performance of RESTful web services. These APIs enable communication and data exchange between different systems, making them integral components of modern software architectures.\n\n### Key Aspects of REST API Testing:\n\n1. **HTTP Methods:**\n    - RESTful APIs use standard HTTP methods to perform various operations. Common methods include:\n        - GET: Retrieve information.\n        - POST: Create a new resource.\n        - PUT: Update an existing resource.\n        - DELETE: Remove a resource.\n2. **Request and Response:**\n    - Testing involves crafting HTTP requests with specific parameters, headers, and payloads to simulate different scenarios.\n    - Responses are examined for correct status codes, headers, and response bodies.\n3. **URI (Uniform Resource Identifier):**\n    - URIs are used to uniquely identify resources. Testing involves validating that URIs follow conventions and that they correctly identify resources.\n4. **Authentication and Authorization:**\n    - Testing ensures that authentication mechanisms, such as API keys or OAuth tokens, are correctly implemented.\n    - Authorization checks, ensuring that only authorized users can access certain resources, are also tested.\n5. **Data Formats:**\n    \n    - RESTful APIs often communicate using JSON or XML as data interchange formats. Testing involves validating that the API",
 		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
 		"_exporter_id": "32291673",
-		"_collection_link": "https://api-aut-test-960506.postman.co/workspace/Dummy-Test~377fc758-3dc9-4942-932b-fdca9a163ec7/collection/32291673-e6323932-9a20-4b5e-a980-8bcba5154f0c?action=share&source=collection_link&creator=32291673"
+		"_collection_link": "https://api-aut-test-960506.postman.co/workspace/377fc758-3dc9-4942-932b-fdca9a163ec7/collection/32291673-e6323932-9a20-4b5e-a980-8bcba5154f0c?action=share&source=collection_link&creator=32291673"
 	},
 	"item": [
 		{
-			"name": "Get All users Request",
+			"name": "Get All users",
 			"event": [
 				{
 					"listen": "test",
@@ -99,7 +100,8 @@
 							"value": "{{HOST_ADDRESS}}"
 						}
 					]
-				}
+				},
+				"description": "Retrieve a list of all users."
 			},
 			"response": []
 		},
@@ -138,12 +140,13 @@
 						"users",
 						"{{userId}}"
 					]
-				}
+				},
+				"description": "Retrieve a specific user by its userId."
 			},
 			"response": []
 		},
 		{
-			"name": "Create user Request",
+			"name": "Create user",
 			"event": [
 				{
 					"listen": "test",
@@ -195,7 +198,8 @@
 					"path": [
 						"users"
 					]
-				}
+				},
+				"description": "Create a new user."
 			},
 			"response": []
 		},
@@ -222,7 +226,8 @@
 						"users",
 						"{{userId}}"
 					]
-				}
+				},
+				"description": "Update an existing user by matching userId."
 			},
 			"response": []
 		},
@@ -240,7 +245,8 @@
 						"users",
 						"3"
 					]
-				}
+				},
+				"description": "Delete an user by userId"
 			},
 			"response": []
 		},
@@ -267,7 +273,8 @@
 						"users",
 						"2"
 					]
-				}
+				},
+				"description": "Update a signle job fields as small patch."
 			},
 			"response": []
 		}
